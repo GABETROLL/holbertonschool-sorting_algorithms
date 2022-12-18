@@ -21,9 +21,11 @@ struct listint_s *next;
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 
-int swap(int *array, size_t size, size_t a, size_t b);
+int swap_in_array(int *array, size_t size, size_t a, size_t b);
+void swap_in_list(listint_t **node_a_pp, listint_t **node_b_pp);
 
 void bubble_sort(int *array, size_t size);
-
+void insertion_sort_list(listint_t **list);
+void selection_sort(int *array, size_t size);
 #endif
 
