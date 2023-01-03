@@ -27,5 +27,6 @@ void swap_in_list(listint_t **node_a_pp, listint_t **node_b_pp);
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
+void quick_sort(int *array, size_t size);
 #endif
 
