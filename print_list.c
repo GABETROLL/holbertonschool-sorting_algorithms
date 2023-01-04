@@ -24,6 +24,7 @@ void print_list(const listint_t *list)
 }
 
 /**
+ * swap_in_list -
  * Swaps nodes '**node_a_pp' with '**node_n_pp' in
  * this project's doubly linked list type,
  *
