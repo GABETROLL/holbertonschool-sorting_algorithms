@@ -56,6 +56,9 @@ void bubble_sort(int *array, size_t size)
 {
 	size_t end = size - 1;
 
+	if (!array)
+		return;
+
 	for (; end; end--)
 	{
 		size_t index = 0;
