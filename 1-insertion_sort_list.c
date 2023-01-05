@@ -68,6 +68,15 @@ void swap_in_list(listint_t **node_a_pp, listint_t **node_b_pp)
  * wouldn't compile 'swap.c')
  */
 
+/**
+ * insertion_sort_list - Sorts the linked list
+ * using the Insertion Sort algorithm,
+ * using the 'swap_in_list' function above.
+ *
+ * @list: list to sort
+ *
+ * Return: nothing
+ */
 void insertion_sort_list(listint_t **list)
 {
 	listint_t **start_of_mess = list;
