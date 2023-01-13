@@ -55,6 +55,9 @@ void selection_sort(int *array, size_t size)
 {
 	size_t start_index = 0;
 
+	if (!array)
+		return;
+
 	for (; start_index < size; start_index++)
 	{
 		size_t index_of_smallest = start_index;
