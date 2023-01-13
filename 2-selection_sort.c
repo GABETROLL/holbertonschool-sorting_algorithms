@@ -63,7 +63,6 @@ void selection_sort(int *array, size_t size)
 		size_t index_of_smallest = start_index;
 		size_t index = start_index;
 
-		sorted = 1;
 		for (; index < size; index++)
 		{
 			if (array[index] < array[index_of_smallest])
