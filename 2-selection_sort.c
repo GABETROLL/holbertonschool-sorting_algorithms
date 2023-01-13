@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * swap_in_array - Tries to swap ints in array parameter
@@ -54,21 +55,25 @@ int swap_in_array(int *array, size_t size, size_t a, size_t b)
 void selection_sort(int *array, size_t size)
 {
 	size_t start_index = 0;
+	int sorted = 0;
 
 	if (!array)
 		return;
 
-	for (; start_index < size; start_index++)
+	for (; !sorted && start_index < size; start_index++)
 	{
 		size_t index_of_smallest = start_index;
 		size_t index = start_index;
 
+		sorted = 1;
 		for (; index < size; index++)
 		{
 			if (array[index] < array[index_of_smallest])
+			{
+				sorted = 0;
 				index_of_smallest = index;
+			}
 		}
-
 		swap_in_array(array, size, start_index, index_of_smallest);
 		print_array(array, size);
 	}
