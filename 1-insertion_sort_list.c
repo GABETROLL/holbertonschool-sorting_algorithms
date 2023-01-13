@@ -79,33 +79,60 @@ void swap_in_list(listint_t **node_a_pp, listint_t **node_b_pp)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t **start_of_mess = list;
+	/*
+	 * the node that's currently being inserted
+	 *
+	 * 2, in this example:
+	 *
+	 * 3, 4, 5, 2
+	 * 3, 4, 2, 5
+	 * 3, 2, 4, 5
+	 * 2, 3, 4, 5
+	 *
+	 * God loves you!
+	 */
+	listint_t **inserted_node = list;
 
 	/*
-	 * start start_of_mess at the head,
+	 * start 'inserted_node' at the head,
 	 * and keep inserting the node at that
 	 * "index" into its place in the previous
 	 * nodes
 	 */
-	while (*start_of_mess)
+	while (*inserted_node)
 	{
-		listint_t **prev = &(*start_of_mess)->prev;
-		listint_t **next = &(*start_of_mess)->next;
+		/*
+		 * for inserting nodes with
+		 * low values from the mess at high indexes
+		 */
+		listint_t **prev = &(*inserted_node)->prev;
+		/* for going to the next node */
+		listint_t **next = &(*inserted_node)->next;
 
-		while (*prev && (*prev)->n > (*start_of_mess)->n)
+		while (*prev && (*prev)->n > (*inserted_node)->n)
 		{
-			swap_in_list(prev, start_of_mess);
+			/*
+			 * for when swapping nodes in memory,
+			 * the pointer inside the attributes of the nodes
+			 * was the pointer pointed to in 'inserted_node',
+			 * and therefore, we're now using 'inserted_node_copy'
+			 * to keep track of where the inserted node is going
+			 */
+			listint_t *inserted_node_copy = *inserted_node;
+
+			/* insert the node once, each time */
+			swap_in_list(prev, inserted_node);
 			print_list(*list);
 
-			prev = &(*start_of_mess)->prev;
+			prev = &(inserted_node_copy->prev);
+			inserted_node = &inserted_node_copy;
 
-			printf("*start_of_mess: %p, *prev: %p, *next: %p\n",
-					(void *)*start_of_mess,
+			printf("*inserted_node: %p, *prev: %p, *next: %p\n",
+					(void *)*inserted_node,
 					(void *)*prev,
 					(void *)*next);
 		}
 
-		start_of_mess = next;
+		inserted_node = next;
 	}
 }
-
