@@ -126,11 +126,6 @@ void insertion_sort_list(listint_t **list)
 
 			prev = &(inserted_node_copy->prev);
 			inserted_node = &inserted_node_copy;
-
-			printf("*inserted_node: %p, *prev: %p, *next: %p\n",
-					(void *)*inserted_node,
-					(void *)*prev,
-					(void *)*next);
 		}
 
 		inserted_node = next;
