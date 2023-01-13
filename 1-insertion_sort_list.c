@@ -80,25 +80,17 @@ void swap_in_list(listint_t **node_a_pp, listint_t **node_b_pp)
 void insertion_sort_list(listint_t **list)
 {
 	/*
-	 * the node that's currently being inserted
-	 *
+	 * the node that's currently being inserted,
 	 * 2, in this example:
-	 *
+	 * (each line is one iteration)
 	 * 3, 4, 5, 2
 	 * 3, 4, 2, 5
 	 * 3, 2, 4, 5
 	 * 2, 3, 4, 5
-	 *
 	 * God loves you!
 	 */
 	listint_t **inserted_node = list;
 
-	/*
-	 * start 'inserted_node' at the head,
-	 * and keep inserting the node at that
-	 * "index" into its place in the previous
-	 * nodes
-	 */
 	while (*inserted_node)
 	{
 		/*
@@ -112,22 +104,19 @@ void insertion_sort_list(listint_t **list)
 		while (*prev && (*prev)->n > (*inserted_node)->n)
 		{
 			/*
-			 * for when swapping nodes in memory,
-			 * the pointer inside the attributes of the nodes
-			 * was the pointer pointed to in 'inserted_node',
-			 * and therefore, we're now using 'inserted_node_copy'
-			 * to keep track of where the inserted node is going
+			 * We have to keep track of the location of the
+			 * inserted node itself, instead of the pointer's
+			 * location, since we're supposed to follow the
+			 * inserted node to the next swap iteration in this loop.
 			 */
 			listint_t *inserted_node_copy = *inserted_node;
 
-			/* insert the node once, each time */
 			swap_in_list(prev, inserted_node);
 			print_list(*list);
 
 			prev = &(inserted_node_copy->prev);
 			inserted_node = &inserted_node_copy;
 		}
-
 		inserted_node = next;
 	}
 }
