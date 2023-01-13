@@ -78,15 +78,15 @@ void selection_sort(int *array, size_t size)
 			if (array[index] < array[index_of_smallest])
 				index_of_smallest = index;
 		}
-		swap_in_array(array, size, start_index, index_of_smallest);
-		print_array(array, size);
-
 		/*
 		 * all of the items were in order,
 		 * we're off work early
 		 */
 		if (sorted)
 			return;
+
+		swap_in_array(array, size, start_index, index_of_smallest);
+		print_array(array, size);
 	}
 }
 
